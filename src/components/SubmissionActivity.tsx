@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LineChart from './LineChart';
 import { Card, CardContent, CardHeader } from './ui/card';
 import submissionData from '../../data/Data'; // Import the submission data array
+import Image from 'next/image';
 
 type Props = {}
 
@@ -23,7 +24,7 @@ const SubmissionActivity = (props: Props) => {
                             <div className="flex-1 text-center">{submission.problemNumber}</div>
                             <div className="flex-1 text-right">{submission.timeSince}</div>
                             <div className="flex-1 text-center ml-28">
-                                <img className='w-6 h-6' src={getStatusImage(submission.status)} alt={submission.status} />
+                                <Image className='w-6 h-6' src={getStatusImage(submission.status)} alt={submission.status} />
                             </div>                        </div>
                     ))}
                 </CardContent>

@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+import Image from "next/image";
 
 export default async function Profile() {
     const session = await getServerSession();
@@ -10,7 +11,7 @@ export default async function Profile() {
             </h1>
             {session?.user ? (
                 <div className="bg-gray-200 p-4 rounded-md">
-                    <img
+                    <Image
                         src={session.user.image || '/default-profile-image.jpg'} // You might have a default image
                         alt={session.user.name as string}
                         className="rounded-full w-24 h-24 object-cover mx-auto mb-4"
