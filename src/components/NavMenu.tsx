@@ -22,7 +22,7 @@ function AuthButton() {
     }
     return (
         <>
-            <button onClick={() => signIn()}>Sign in</button>
+            <button className='w-24' onClick={() => signIn()}>Sign in</button>
         </>
     );
 }
@@ -30,6 +30,7 @@ function AuthButton() {
 type Props = {}
 
 const NavMenu = (props: Props) => {
+    const { data: session } = useSession();
     const pathname = usePathname();
 
     return (
@@ -49,9 +50,12 @@ const NavMenu = (props: Props) => {
                 <Link href={"/leaderboard"} className={pathname === "/leaderboard" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
                     Leaderboard
                 </Link>
-                <Link href={"/login"} className={pathname === "/login" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
+                {session && <Link href={"/profile"} className={pathname === "/profile" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
+                    Profile
+                </Link>}
+                <div className={pathname === "/login" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
                     <AuthButton />
-                </Link>
+                </div>
                 <input type="text" placeholder="Search..." className="bg-gray-200 text-black px-2 py-1 ml-6 rounded-md" />
             </div>
         </div>
